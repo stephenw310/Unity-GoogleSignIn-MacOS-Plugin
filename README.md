@@ -33,7 +33,7 @@ Sign-in result is serialized as a JSON string and passed to the callback functio
 
 Here is a sample JSON when sign-in is successful
 
-```json
+```javascript
 {
     "success": true,
     "accessToken": "xxxxxx",
@@ -48,7 +48,7 @@ Here is a sample JSON when sign-in is successful
 
 Here is a sample JSON when sign-in failed.
 
-```json
+```javascript
 {
     "success": false,
     "errorCode": -5,
