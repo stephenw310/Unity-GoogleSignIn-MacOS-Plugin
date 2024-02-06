@@ -1,9 +1,9 @@
 # Unity Google Sign-In MacOS Plugin
 
 ## Description
-This is a Unity OSX plugin that allows users to sign in with Google using the Google Sign-In SDK for macOS.
+This repo is a Unity MacOS plugin source code which is a wrapper for the official Google Sign-In MacOS SDK.
 
-For more information how to setup Google Sign-In for MacOS, see [Google Sign-In SDK for iOS & macOS](https://developers.google.com/identity/sign-in/ios/start).
+For more information on how to set up Google Sign-In for MacOS, see [Google Sign-In SDK for iOS & macOS](https://developers.google.com/identity/sign-in/ios/start).
 
 ## Prerequisites
 - [Xcode](https://developer.apple.com/xcode/)
