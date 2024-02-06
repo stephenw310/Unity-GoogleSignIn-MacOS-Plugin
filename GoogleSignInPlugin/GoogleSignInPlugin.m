@@ -60,16 +60,18 @@ static GoogleSignInPlugin *shared = nil;
             jsonString = [self serializeToJsonString:errorDictionary];
         }
         else {
-            NSDictionary *jsonDictionary = @{
+            NSMutableDictionary *jsonDictionary = [@{
                 @"success" : @YES,
-                @"userId": signInResult.user.userID,
-                @"email": signInResult.user.profile.email,
-                @"name": signInResult.user.profile.name,
                 @"accessToken": signInResult.user.accessToken.tokenString,
                 @"refreshToken": signInResult.user.refreshToken.tokenString,
-                @"idToken" : signInResult.user.idToken.tokenString,
-                @"serverAuthCode": signInResult.serverAuthCode,
-            };
+            } mutableCopy];
+            
+            if (signInResult.user.userID) jsonDictionary[@"userId"] = signInResult.user.userID;
+            if (signInResult.user.profile.email) jsonDictionary[@"email"] = signInResult.user.profile.email;
+            if (signInResult.user.profile.name) jsonDictionary[@"name"] = signInResult.user.profile.name;
+            if (signInResult.user.idToken.tokenString) jsonDictionary[@"idToken"] = signInResult.user.idToken.tokenString;
+            if (signInResult.serverAuthCode) jsonDictionary[@"serverAuthCode"] = signInResult.serverAuthCode;
+            
             NSLog(@"Google SignIn Success: %@", jsonDictionary);
             
             jsonString = [self serializeToJsonString:jsonDictionary];

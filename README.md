@@ -20,28 +20,29 @@ Here is a sample code
 public delegate void Callback(string message);
 
 [DllImport("libGoogleSignInPlugin")]
-private static extern void _GoogleSignIn(Callback UnityCallback);
+private static extern void _signIn(Callback UnityCallback);
 
+// Sign-in results are serialized as a JSON string
 void UnityCallback(string message)
 {
     Debug.Log(message);
 }
 ```
 
-Sign-in result is serialized as JSON string and passed to the callback function. 
+Sign-in result is serialized as a JSON string and passed to the callback function. 
 
 Here is a sample JSON when sign-in is successful
 
 ```json
 {
-    "success": 1,
-    "userId": "1234567890",
-    "name": "John Doe",
-    "email": "john@gmail.com",
+    "success": true,
     "accessToken": "xxxxxx",
     "idToken": "xxxxxx",
     "refreshToken": "xxxxxx",
-    "serverAuthCode": "xxxxxx"
+    "userId": "1234567890", // optional
+    "name": "John Doe", // optional
+    "email": "john@gmail.com", // optional
+    "serverAuthCode": "xxxxxx" // optional
 }
 ```
 
@@ -49,9 +50,9 @@ Here is a sample JSON when sign-in failed.
 
 ```json
 {
-    "success": 0,
-    "errorCode": "-5",
-    "errorMessage": "User cancelled the sign-in process."
+    "success": false,
+    "errorCode": -5,
+    "errorMessage": "The user cancelled the sign-in flow"
 }
 ```
 
